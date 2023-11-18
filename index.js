@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const port = 4000; 
 
 const app = express();
 app.use(cors());
@@ -36,7 +37,7 @@ app.post('/place_order', (req, res) =>{
 });
 
 app.get('/', (req, res) => {
-    res.send("Welcome");
+    res.send("Welcome to ema-john server!");
 });
 
 app.get('/all_products', (req, res) => {
@@ -52,6 +53,4 @@ app.get('/all_products', (req, res) => {
   .finally(() => client.close());
 });
 
-app.listen(4000, () => {
-    console.log('listening to port 4000');
-});
+app.listen(process.env.PORT || port);
